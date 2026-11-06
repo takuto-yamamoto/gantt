@@ -7,7 +7,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B2A5B'/%3E%3Crect x='18' y='26' width='40' height='12' rx='6' fill='%23FEBE10'/%3E%3Crect x='34' y='46' width='48' height='12' rx='6' fill='%23fff'/%3E%3Crect x='26' y='66' width='30' height='12' rx='6' fill='%23FEBE10'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- BIZ UDPゴシック：見やすさ（ユニバーサルデザイン）を重視した日本語フォント -->
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
 <style>
 /* ══ ホワイト＆ゴールド（復習マネージャーと同じ配色） ══ */
 :root{
@@ -34,12 +35,12 @@ html.size-l{ --fs:16px; --band-w:30px; --name-w:200px; --row-h:40px; --hdr-h:60p
 html,body{height:100%}
 body{
   background:var(--bg);color:var(--lbl);
-  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Meiryo',sans-serif;
+  font-family:'BIZ UDPGothic','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Meiryo',sans-serif;
   font-size:var(--fs);line-height:1.5;-webkit-font-smoothing:antialiased;
   display:flex;flex-direction:column;overflow:hidden;
 }
 button{font-family:inherit;color:inherit;cursor:pointer}
-.num{font-family:'Outfit',-apple-system,sans-serif;font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
 
 /* ── 上部バー ── */
 .topbar{
@@ -81,7 +82,7 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 .filters .div{width:1px;align-self:stretch;background:var(--sep);margin:0 6px;flex-shrink:0}
 .chip{
   display:flex;align-items:center;gap:7px;border:1.5px solid var(--sep);background:#fff;
-  border-radius:100px;padding:2px 11px;font-size:.86em;font-weight:700;color:var(--lbl2);white-space:nowrap;flex-shrink:0
+  border-radius:100px;padding:2px 11px;font-size:.86em;font-weight:400;color:var(--lbl2);white-space:nowrap;flex-shrink:0
 }
 .chip .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
@@ -100,15 +101,15 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 .days{position:relative;flex-shrink:0;height:100%}
 .mon{position:absolute;top:0;height:42%;display:flex;align-items:center;padding-left:8px;
   font-weight:800;color:var(--navy);font-size:.95em;border-left:2px solid var(--sep);white-space:nowrap;overflow:hidden}
-.mon .yr{font-size:.75em;color:var(--lbl3);margin-left:6px;font-weight:700}
+.mon .yr{font-size:.75em;color:var(--lbl3);margin-left:6px;font-weight:400}
 .day{position:absolute;top:42%;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
   border-left:1px solid var(--sep2);line-height:1.15}
-.day .d{font-size:.92em;font-weight:700;color:var(--lbl)}
-.day .w{font-size:.68em;font-weight:700;color:var(--lbl3)}
+.day .d{font-size:.92em;font-weight:400;color:var(--lbl)}
+.day .w{font-size:.68em;font-weight:400;color:var(--lbl3)}
 .day.sat .d,.day.sat .w{color:var(--royal)}
 .day.sun .d,.day.sun .w{color:var(--red)}
 .day.today{background:var(--gold);border-radius:6px 6px 0 0}
-.day.today .d,.day.today .w{color:var(--navy)}
+.day.today .d,.day.today .w{color:var(--navy);font-weight:700}
 
 .body{position:relative}
 .bg{position:absolute;top:0;bottom:0;pointer-events:none;z-index:0}
@@ -142,32 +143,32 @@ button{font-family:inherit;color:inherit;cursor:pointer}
   padding:0 10px 0 10px;cursor:pointer;min-width:0;line-height:var(--row-h)
 }
 /* 1行に「タスク名　期間」を並べて行を低く保つ */
-.name .n{flex:1;min-width:0;font-size:1em;font-weight:700;color:var(--lbl);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name .n{flex:1;min-width:0;font-size:1em;font-weight:400;color:var(--lbl);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .name .m{flex-shrink:0;max-width:48%;font-size:.76em;font-weight:700;color:var(--lbl3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .name .m.over{color:var(--red)}
 .row.done .name .n{color:var(--lbl3);text-decoration:line-through;text-decoration-color:rgba(11,26,51,.3)}
 .track{position:relative;flex-shrink:0}
 
 .bar{
-  position:absolute;top:50%;transform:translateY(-50%);height:calc(var(--row-h) * .56);
-  border-radius:6px;background:var(--c);cursor:pointer;
-  box-shadow:0 1px 2px rgba(11,42,91,.15),inset 0 -3px 0 rgba(0,0,0,.12);
+  position:absolute;top:50%;transform:translateY(-50%);height:calc(var(--row-h) * .38);
+  border-radius:4px;background:var(--c);cursor:pointer;
+  box-shadow:0 1px 1px rgba(11,42,91,.12),inset 0 -2px 0 rgba(0,0,0,.1);
   display:flex;align-items:center;overflow:visible;min-width:12px
 }
 .bar:hover{filter:brightness(1.06);box-shadow:0 0 0 3px var(--gold),0 4px 10px rgba(11,42,91,.2)}
-.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px 0 0 6px;background:rgba(255,255,255,.0);
+.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px 0 0 4px;background:rgba(255,255,255,.0);
   background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.28) 0 6px,transparent 6px 12px)}
-.bar.open{border-radius:6px 0 0 6px;
+.bar.open{border-radius:4px 0 0 4px;
   -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 90px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 90px),transparent)}
 .bar.done{opacity:.38;filter:saturate(.6)}
 .bar.over{box-shadow:0 0 0 2px var(--red),0 1px 2px rgba(11,42,91,.15)}
 .bar-lbl{
-  position:absolute;left:calc(100% + 6px);white-space:nowrap;font-size:.78em;font-weight:700;color:var(--lbl2);pointer-events:none
+  position:absolute;left:calc(100% + 6px);white-space:nowrap;font-size:.8em;font-weight:400;color:var(--lbl2);pointer-events:none
 }
 .bar-lbl.over{color:var(--red)}
 .bar.open .bar-lbl{display:none}
 .open-lbl{position:absolute;top:50%;transform:translateY(-50%);font-size:.74em;font-weight:700;color:var(--lbl3);white-space:nowrap;pointer-events:none}
-.ck{position:absolute;left:4px;width:14px;height:14px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.ck{position:absolute;left:2px;width:10px;height:10px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
 .ms{position:absolute;top:50%;width:calc(var(--row-h)*.36);height:calc(var(--row-h)*.36);transform:translate(-50%,-50%) rotate(45deg);
   background:var(--c);border-radius:4px;cursor:pointer;box-shadow:0 1px 2px rgba(11,42,91,.2)}
 .ms.done{opacity:.38}
@@ -208,7 +209,7 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 .pop-r{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--sep2);font-size:.92em}
 .pop-r:last-child{border-bottom:none}
 .pop-r .k{color:var(--lbl3);font-weight:700;white-space:nowrap}
-.pop-r .v{font-weight:700;text-align:right;color:var(--lbl)}
+.pop-r .v{font-weight:400;text-align:right;color:var(--lbl)}
 .pop-r .v.over{color:var(--red)}
 .pop-f{padding:6px 24px 22px}
 .pop-note{font-size:.76em;color:var(--lbl3);margin-bottom:12px;text-align:center}
@@ -244,7 +245,7 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 /* ════════════════════════════════════════════════════════════
    ガントチャート（復習マネージャー連携ビューア）
    ・復習マネージャーの「連携コード」で同じクラウドデータに接続し、
-     仕事モードのToDo・計画タスクを期間の棒グラフとして表示する
+     ToDo（長期タスクを含む）を期間の棒グラフとして表示する
    ・このアプリは「読み取り専用」。クラウドへは一切書き込まないので、
      復習マネージャー側のデータを壊すことはない
    ・Notionの埋め込み（/embed）で使うことを想定。URL末尾に ?code=XXXXXX を
@@ -274,8 +275,6 @@ const S = {
   zoom: LS.get('zoom2','quarter'),     // 全体像が見えるよう標準は3か月        // week2 | month | quarter
   size: LS.get('size2','n'),           // n（標準・コンパクト） | l（大）
   tagFilter: LS.get('tags',[]),        // 空 = すべて
-  showTodo: LS.get('showTodo',true),
-  showPlan: LS.get('showPlan',true),
   showDone: LS.get('showDone2',false), // 完了したタスクは標準では表示しない（「完了も表示」で切り替え）
 };
 const ZOOM = { week2:{label:'2週間',dw:48}, month:{label:'1か月',dw:28}, quarter:{label:'3か月',dw:11}, half:{label:'半年',dw:5} };
@@ -294,6 +293,8 @@ const mdw = s => `${md(s)}（${WD[new Date(s+'T00:00:00').getDay()]}）`;
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 /* ══ データ → ガントの行 ══════════════════════════════ */
+// このガントチャートはToDoだけを表示する（計画タスクも出したくなったら true にする）
+const SHOW_PLANS = false;
 const PLAN_TYPE = { daily:'毎日', weekday:'曜日指定', interval:'間隔', goal:'目標', schedule:'日程指定' };
 function alive(arr, tomb){
   tomb = tomb || {};
@@ -320,7 +321,7 @@ function buildItems(data){
       typeLabel: x.longterm ? '長期ToDo' : 'ToDo', half: !!x.half,
     });
   });
-  alive(data.plan, data.planTombstones).forEach(p=>{
+  if(SHOW_PLANS) alive(data.plan, data.planTombstones).forEach(p=>{
     const base = { kind:'plan', id:p.id, name:p.name||'(無題)', tags:p.tags||[], typeLabel:'計画・'+(PLAN_TYPE[p.type]||''), done:!!p.done, doneDay: p.done?dayOfMs(p.completedAt):null, raw:p };
     if(p.type==='schedule'){
       const rows = (p.schedule||[]).filter(r=>r && isYmd(r.date)).sort((a,b)=>a.date.localeCompare(b.date));
@@ -359,7 +360,7 @@ function renderConnect(msg){
   $app.innerHTML = `
   <div class="center"><div class="card">
     <h1>復習マネージャーと連携する</h1>
-    <p>連携コード（6文字）を入力すると、仕事モードのToDoと計画タスクがガントチャートで表示されます。</p>
+    <p>連携コード（6文字）を入力すると、ToDoがガントチャートで表示されます。</p>
     <ol>
       <li>復習マネージャーの <b>設定 → データの保存・読み込み</b> を開く</li>
       <li><b>他の端末とつなげる</b> に表示されている連携コードを確認</li>
@@ -401,8 +402,6 @@ function renderChart(){
   // 絞り込み
   const tf = S.tagFilter.filter(id=>tagMap.has(id) || id==='__none');
   items = items.filter(it=>{
-    if(it.kind==='todo' && !S.showTodo) return false;
-    if(it.kind==='plan' && !S.showPlan) return false;
     if(it.done && !S.showDone) return false;
     if(tf.length){
       const ids = it.tags.filter(id=>tagMap.has(id));
@@ -496,8 +495,6 @@ function renderChart(){
   </div>
   <div class="filters">
     <span class="lbl">表示</span>
-    <button class="chip gold${S.showTodo?' on':''}" onclick="toggleKey('showTodo')">ToDo</button>
-    <button class="chip gold${S.showPlan?' on':''}" onclick="toggleKey('showPlan')">計画</button>
     <button class="chip gold${S.showDone?' on':''}" onclick="toggleKey('showDone')">完了も表示</button>
     ${TAGS.length?`<span class="div"></span><span class="lbl">タグ</span>${fChips}<button class="chip${tf.includes('__none')?' on':''}" onclick="toggleTag('__none')"><span class="dot" style="background:#9CA3AF"></span>タグなし</button>`:''}
     ${tf.length?`<button class="chip" onclick="clearTags()" style="border-style:dashed">絞り込みを解除</button>`:''}
@@ -510,7 +507,7 @@ function renderChart(){
       </div>
       <div class="body">
         <div class="bg" style="left:calc(var(--band-w) + var(--name-w));width:${W}px">${bg}</div>
-        ${rows || `<div class="empty">表示できるタスクがありません<br><span style="font-size:.85em;font-weight:600">復習マネージャーの仕事モードでToDoや計画を追加すると、ここに表示されます</span></div>`}
+        ${rows || `<div class="empty">表示できるタスクがありません<br><span style="font-size:.85em;font-weight:600">復習マネージャーでToDoを追加すると、ここに表示されます</span></div>`}
       </div>
     </div>
   </div>`;
@@ -535,7 +532,7 @@ function rowHtml(it, color, x, dw, W, t){
   if(it.countTxt && !it.done) meta = `${it.countTxt}・${meta}`;
 
   let bar = '';
-  const ck = it.done ? `<span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 7"/></svg></span>` : '';
+  const ck = it.done ? `<span class="ck"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 7"/></svg></span>` : '';
   const click = `onclick="openPop('${esc(it.kind)}','${esc(it.id)}')"`;
   if(it.milestones){
     const a = x(it.start), b = x(it.end)+dw;
