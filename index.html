@@ -18,15 +18,17 @@
   --shadow:0 1px 2px rgba(11,42,91,.06),0 10px 24px -10px rgba(11,42,91,.18);
   --shadow-lg:0 8px 16px -4px rgba(11,42,91,.12),0 24px 48px -12px rgba(11,42,91,.26);
   /* 老眼対策：基準の文字を大きめに。「特大」で全体がさらに拡大される */
-  --fs:18px;
-  --name-w:280px;
-  --row-h:58px;
-  --hdr-h:76px;
+  /* 全体像が見えるよう標準はコンパクト。「大」で一段大きくできる */
+  --fs:14px;
+  --band-w:26px;
+  --name-w:170px;
+  --row-h:32px;
+  --hdr-h:52px;
 }
-html.size-xl{ --fs:21px; --name-w:320px; --row-h:66px; --hdr-h:84px; }
+html.size-l{ --fs:16px; --band-w:30px; --name-w:200px; --row-h:40px; --hdr-h:60px; }
 @media (max-width:640px){
-  :root{ --name-w:170px; }
-  html.size-xl{ --name-w:190px; }
+  :root{ --name-w:120px; }
+  html.size-l{ --name-w:140px; }
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -42,14 +44,14 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 /* ── 上部バー ── */
 .topbar{
   flex-shrink:0;background:#fff;border-bottom:3px solid var(--gold);
-  padding:12px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:7px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
 }
 .brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
-.brand-ic{width:38px;height:38px;border-radius:11px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 2px var(--gold)}
-.brand-name{font-size:1.2em;font-weight:800;color:var(--navy);letter-spacing:.3px;white-space:nowrap}
+.brand-ic{width:28px;height:28px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 2px var(--gold)}
+.brand-name{font-size:1.1em;font-weight:800;color:var(--navy);letter-spacing:.3px;white-space:nowrap}
 .sync-pill{
   display:flex;align-items:center;gap:8px;border:1.5px solid var(--sep);border-radius:100px;
-  padding:6px 14px;font-size:.85em;font-weight:700;color:var(--lbl2);background:#fff;white-space:nowrap
+  padding:4px 12px;font-size:.85em;font-weight:700;color:var(--lbl2);background:#fff;white-space:nowrap
 }
 .sync-dot{width:10px;height:10px;border-radius:50%;background:var(--lbl3)}
 .sync-pill.live .sync-dot{background:#1F9D55;box-shadow:0 0 0 3px rgba(31,157,85,.18)}
@@ -58,12 +60,12 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 
 .seg{display:flex;background:var(--fill);border-radius:12px;padding:3px;gap:2px}
 .seg button{
-  border:none;background:transparent;border-radius:9px;padding:7px 14px;
+  border:none;background:transparent;border-radius:8px;padding:4px 11px;
   font-size:.88em;font-weight:700;color:var(--lbl2);white-space:nowrap
 }
 .seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(11,42,91,.15),inset 0 -2px 0 var(--gold)}
 .btn{
-  border:1.5px solid var(--sep);background:#fff;border-radius:12px;padding:7px 14px;
+  border:1.5px solid var(--sep);background:#fff;border-radius:10px;padding:4px 11px;
   font-size:.88em;font-weight:700;color:var(--navy);white-space:nowrap;display:flex;align-items:center;gap:6px
 }
 .btn:hover{border-color:var(--gold)}
@@ -72,16 +74,16 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 /* ── フィルター行 ── */
 .filters{
   flex-shrink:0;background:#fff;border-bottom:1px solid var(--sep);
-  padding:10px 18px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none
+  padding:6px 14px;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none
 }
 .filters::-webkit-scrollbar{display:none}
 .filters .lbl{font-size:.8em;font-weight:800;color:var(--lbl3);white-space:nowrap;margin-right:2px}
 .filters .div{width:1px;align-self:stretch;background:var(--sep);margin:0 6px;flex-shrink:0}
 .chip{
   display:flex;align-items:center;gap:7px;border:1.5px solid var(--sep);background:#fff;
-  border-radius:100px;padding:5px 14px;font-size:.86em;font-weight:700;color:var(--lbl2);white-space:nowrap;flex-shrink:0
+  border-radius:100px;padding:2px 11px;font-size:.86em;font-weight:700;color:var(--lbl2);white-space:nowrap;flex-shrink:0
 }
-.chip .dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.chip .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
 .chip.on .dot{box-shadow:0 0 0 2px #fff}
 .chip.gold.on{background:var(--gold);border-color:var(--gold);color:var(--navy)}
@@ -91,21 +93,21 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 .canvas{position:relative;min-height:100%}
 .hdr{position:sticky;top:0;z-index:20;display:flex;height:var(--hdr-h);background:#fff;border-bottom:2px solid var(--navy)}
 .corner{
-  position:sticky;left:0;z-index:21;width:var(--name-w);flex-shrink:0;background:#fff;
-  border-right:2px solid var(--sep);display:flex;align-items:flex-end;padding:0 16px 10px;
+  position:sticky;left:0;z-index:21;width:calc(var(--band-w) + var(--name-w));flex-shrink:0;background:#fff;
+  border-right:2px solid var(--sep);display:flex;align-items:flex-end;padding:0 12px 7px;
   font-size:.82em;font-weight:800;color:var(--lbl3);letter-spacing:.5px
 }
 .days{position:relative;flex-shrink:0;height:100%}
-.mon{position:absolute;top:0;height:38%;display:flex;align-items:center;padding-left:10px;
+.mon{position:absolute;top:0;height:42%;display:flex;align-items:center;padding-left:8px;
   font-weight:800;color:var(--navy);font-size:.95em;border-left:2px solid var(--sep);white-space:nowrap;overflow:hidden}
 .mon .yr{font-size:.75em;color:var(--lbl3);margin-left:6px;font-weight:700}
-.day{position:absolute;top:38%;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+.day{position:absolute;top:42%;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
   border-left:1px solid var(--sep2);line-height:1.15}
 .day .d{font-size:.92em;font-weight:700;color:var(--lbl)}
 .day .w{font-size:.68em;font-weight:700;color:var(--lbl3)}
 .day.sat .d,.day.sat .w{color:var(--royal)}
 .day.sun .d,.day.sun .w{color:var(--red)}
-.day.today{background:var(--gold);border-radius:10px 10px 0 0}
+.day.today{background:var(--gold);border-radius:6px 6px 0 0}
 .day.today .d,.day.today .w{color:var(--navy)}
 
 .body{position:relative}
@@ -115,49 +117,58 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 .bg .mo{position:absolute;top:0;bottom:0;border-left:2px solid var(--sep)}
 .bg .now{position:absolute;top:0;bottom:0;background:rgba(254,190,16,.13);border-left:2px solid var(--gold);border-right:2px solid var(--gold)}
 
-.grp{position:relative;z-index:2;display:flex;height:calc(var(--row-h) * .82);background:#FAFBFD;border-bottom:1px solid var(--sep);cursor:pointer}
-.grp .name{background:#FAFBFD}
-.grp-ttl{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);font-size:.95em;min-width:0}
-.grp-ttl .dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
-.grp-ttl .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.grp-ttl .c{font-family:'Outfit',sans-serif;font-size:.8em;color:var(--lbl3);font-weight:700}
-.grp-ttl .chev{width:18px;height:18px;flex-shrink:0;color:var(--lbl3);transition:transform .2s}
-.grp.closed .chev{transform:rotate(-90deg)}
-
+.gsec{position:relative;z-index:1;display:flex;border-bottom:2px solid var(--sep)}
+.gsec:last-child{border-bottom:none}
+/* タグ名は左端に縦書きで。タグの色の帯でまとまり（領域）が分かるようにする */
+.tagband{
+  position:sticky;left:0;z-index:6;width:var(--band-w);flex-shrink:0;
+  background:color-mix(in srgb, var(--tc) 16%, #fff);border-left:4px solid var(--tc);
+  border-right:1px solid color-mix(in srgb, var(--tc) 30%, #fff);
+  display:flex;align-items:flex-start;justify-content:center;overflow:hidden;padding:6px 0
+}
+.tagband span{
+  /* 文字の長さで行の高さが変わらないよう、帯の中に重ねて置く（はみ出た分は隠す） */
+  position:absolute;top:5px;bottom:5px;left:50%;transform:translateX(-50%);overflow:hidden;
+  writing-mode:vertical-rl;text-orientation:upright;font-size:.82em;font-weight:800;letter-spacing:1px;
+  color:color-mix(in srgb, var(--tc) 55%, #0B1A33);white-space:nowrap;line-height:1
+}
+.grows{flex:1;min-width:0}
 .row{position:relative;z-index:1;display:flex;height:var(--row-h);border-bottom:1px solid var(--sep2)}
+.grows .row:last-child{border-bottom:none}
 .row:hover .name,.row:hover{background-color:rgba(254,190,16,.06)}
 .name{
-  position:sticky;left:0;z-index:5;width:var(--name-w);flex-shrink:0;background:#fff;
-  border-right:2px solid var(--sep);display:flex;flex-direction:column;justify-content:center;
-  padding:0 14px 0 16px;cursor:pointer;min-width:0
+  position:sticky;left:var(--band-w);z-index:5;width:var(--name-w);flex-shrink:0;background:#fff;
+  border-right:2px solid var(--sep);display:flex;align-items:baseline;gap:8px;
+  padding:0 10px 0 10px;cursor:pointer;min-width:0;line-height:var(--row-h)
 }
-.name .n{font-size:1em;font-weight:700;color:var(--lbl);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.name .m{font-size:.74em;font-weight:700;color:var(--lbl3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 1行に「タスク名　期間」を並べて行を低く保つ */
+.name .n{flex:1;min-width:0;font-size:1em;font-weight:700;color:var(--lbl);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name .m{flex-shrink:0;max-width:48%;font-size:.76em;font-weight:700;color:var(--lbl3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .name .m.over{color:var(--red)}
 .row.done .name .n{color:var(--lbl3);text-decoration:line-through;text-decoration-color:rgba(11,26,51,.3)}
 .track{position:relative;flex-shrink:0}
 
 .bar{
-  position:absolute;top:50%;transform:translateY(-50%);height:calc(var(--row-h) * .5);
-  border-radius:10px;background:var(--c);cursor:pointer;
+  position:absolute;top:50%;transform:translateY(-50%);height:calc(var(--row-h) * .56);
+  border-radius:6px;background:var(--c);cursor:pointer;
   box-shadow:0 1px 2px rgba(11,42,91,.15),inset 0 -3px 0 rgba(0,0,0,.12);
   display:flex;align-items:center;overflow:visible;min-width:12px
 }
 .bar:hover{filter:brightness(1.06);box-shadow:0 0 0 3px var(--gold),0 4px 10px rgba(11,42,91,.2)}
-.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:10px 0 0 10px;background:rgba(255,255,255,.0);
+.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px 0 0 6px;background:rgba(255,255,255,.0);
   background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.28) 0 6px,transparent 6px 12px)}
-.bar.open{border-radius:10px 0 0 10px;
+.bar.open{border-radius:6px 0 0 6px;
   -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 90px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 90px),transparent)}
 .bar.done{opacity:.38;filter:saturate(.6)}
-.bar.over{box-shadow:0 0 0 3px var(--red),0 1px 2px rgba(11,42,91,.15)}
+.bar.over{box-shadow:0 0 0 2px var(--red),0 1px 2px rgba(11,42,91,.15)}
 .bar-lbl{
-  position:absolute;left:calc(100% + 10px);white-space:nowrap;font-size:.78em;font-weight:700;color:var(--lbl2);pointer-events:none
+  position:absolute;left:calc(100% + 6px);white-space:nowrap;font-size:.78em;font-weight:700;color:var(--lbl2);pointer-events:none
 }
 .bar-lbl.over{color:var(--red)}
 .bar.open .bar-lbl{display:none}
 .open-lbl{position:absolute;top:50%;transform:translateY(-50%);font-size:.74em;font-weight:700;color:var(--lbl3);white-space:nowrap;pointer-events:none}
-.ck{position:absolute;left:8px;width:20px;height:20px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
-.ms{position:absolute;top:50%;width:calc(var(--row-h)*.4);height:calc(var(--row-h)*.4);transform:translate(-50%,-50%) rotate(45deg);
+.ck{position:absolute;left:4px;width:14px;height:14px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.ms{position:absolute;top:50%;width:calc(var(--row-h)*.36);height:calc(var(--row-h)*.36);transform:translate(-50%,-50%) rotate(45deg);
   background:var(--c);border-radius:4px;cursor:pointer;box-shadow:0 1px 2px rgba(11,42,91,.2)}
 .ms.done{opacity:.38}
 .ms:hover{box-shadow:0 0 0 3px var(--gold)}
@@ -260,15 +271,14 @@ const S = {
   phase: 'connect',          // connect | loading | ready | error
   error: '',
   data: null, updatedAt: 0, live: false,
-  zoom: LS.get('zoom','month'),        // week2 | month | quarter
-  size: LS.get('size','l'),            // l | xl
+  zoom: LS.get('zoom2','quarter'),     // 全体像が見えるよう標準は3か月        // week2 | month | quarter
+  size: LS.get('size2','n'),           // n（標準・コンパクト） | l（大）
   tagFilter: LS.get('tags',[]),        // 空 = すべて
   showTodo: LS.get('showTodo',true),
   showPlan: LS.get('showPlan',true),
   showDone: LS.get('showDone2',false), // 完了したタスクは標準では表示しない（「完了も表示」で切り替え）
-  closed: LS.get('closed',{}),
 };
-const ZOOM = { week2:{label:'2週間',dw:66}, month:{label:'1か月',dw:42}, quarter:{label:'3か月',dw:18} };
+const ZOOM = { week2:{label:'2週間',dw:48}, month:{label:'1か月',dw:28}, quarter:{label:'3か月',dw:11}, half:{label:'半年',dw:5} };
 
 /* ── 日付ユーティリティ（"YYYY-MM-DD" を日番号に変換して扱う） ── */
 const pad = n => String(n).padStart(2,'0');
@@ -335,7 +345,7 @@ function tagsOf(data){ return alive(data.tags, data.tagTombstones); }
 
 /* ══ 描画 ═══════════════════════════════════════════ */
 const $app = document.getElementById('app');
-function applySize(){ document.documentElement.classList.toggle('size-xl', S.size==='xl'); }
+function applySize(){ document.documentElement.classList.toggle('size-l', S.size==='l'); }
 applySize();
 
 function render(){
@@ -443,12 +453,13 @@ function renderChart(){
     }
     if(wd===0||wd===6) bg += `<div class="we" style="left:${left}px;width:${dw}px"></div>`;
     const cls = `day${wd===6?' sat':''}${wd===0?' sun':''}${s===t?' today':''}`;
-    if(dw>=30){
+    if(dw>=24){
       dayH += `<div class="${cls}" style="left:${left}px;width:${dw}px"><span class="d num">${dd}</span><span class="w">${WD[wd]}</span></div>`;
-    } else if(wd===1 || s===t){
+    } else if(s===t || (dw>=9 ? wd===1 : dd===1||dd===15)){
       // 3か月表示では週の始まり（月曜）と今日だけ日付を出す
-      dayH += `<div class="${cls}" style="left:${left}px;width:${s===t?dw:dw*7}px;${s===t?'':'align-items:flex-start;padding-left:4px'}"><span class="d num">${dd}</span><span class="w">${s===t?'今日':WD[wd]}</span></div>`;
-      if(wd===1) bg += `<div class="wk" style="left:${left}px"></div>`;
+      const span = s===t ? Math.max(dw,22) : (dw>=9 ? dw*7 : dw*14);
+      dayH += `<div class="${cls}" style="left:${left}px;width:${span}px;${s===t?'margin-left:'+(dw-span)/2+'px':'align-items:flex-start;padding-left:3px'}"><span class="d num">${dd}</span><span class="w">${s===t?'今日':(dw>=9?WD[wd]:'')}</span></div>`;
+      if(s!==t) bg += `<div class="wk" style="left:${left}px"></div>`;
     }
   }
   bg += `<div class="now" style="left:${(tDn-lo)*dw}px;width:${dw}px"></div>`;
@@ -457,16 +468,11 @@ function renderChart(){
   let rows = '';
   shown.forEach(g=>{
     const color = g.tag ? g.tag.color : '#9CA3AF';
-    const closed = !!S.closed[g.key];
-    rows += `<div class="grp${closed?' closed':''}" onclick="toggleGroup('${esc(g.key)}')">
-      <div class="name"><div class="grp-ttl">
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        <span class="dot" style="background:${color}"></span><span class="t">${g.tag?esc(g.tag.name):'タグなし'}</span><span class="c">${g.items.length}</span>
-      </div></div>
-      <div class="track" style="width:${W}px">${groupSpan(g.items, x, dw, color)}</div>
+    const label = g.tag ? g.tag.name : 'タグなし';
+    rows += `<div class="gsec" style="--tc:${color}">
+      <div class="tagband" title="${esc(label)}（${g.items.length}件）"><span>${esc(label)}</span></div>
+      <div class="grows">${g.items.map(it=>rowHtml(it, color, x, dw, W, t)).join('')}</div>
     </div>`;
-    if(closed) return;
-    g.items.forEach(it=>{ rows += rowHtml(it, color, x, dw, W, t); });
   });
 
   const fChips = TAGS.map(tg=>`<button class="chip${tf.includes(tg.id)?' on':''}" onclick="toggleTag('${esc(tg.id)}')"><span class="dot" style="background:${tg.color}"></span>${esc(tg.name)}</button>`).join('');
@@ -483,7 +489,7 @@ function renderChart(){
     </div>
     <div class="seg" role="group" aria-label="表示する期間">${Object.entries(ZOOM).map(([k,v])=>`<button class="${S.zoom===k?'on':''}" onclick="setZoom('${k}')">${v.label}</button>`).join('')}</div>
     <button class="btn" onclick="scrollToToday(true)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>今日</button>
-    <div class="seg" role="group" aria-label="文字の大きさ"><button class="${S.size==='l'?'on':''}" onclick="setSize('l')">大</button><button class="${S.size==='xl'?'on':''}" onclick="setSize('xl')" style="font-size:1.05em">特大</button></div>
+    <div class="seg" role="group" aria-label="文字の大きさ"><button class="${S.size==='n'?'on':''}" onclick="setSize('n')">標準</button><button class="${S.size==='l'?'on':''}" onclick="setSize('l')" style="font-size:1.08em">大</button></div>
     <button class="sync-pill ${S.live?'live':'err'}" onclick="openMenu(this)" title="連携の設定">
       <span class="sync-dot"></span><span>${S.live?'同期中':'オフライン'}</span><span class="num" style="color:var(--navy)">${esc(S.code)}</span>
     </button>
@@ -497,13 +503,13 @@ function renderChart(){
     ${tf.length?`<button class="chip" onclick="clearTags()" style="border-style:dashed">絞り込みを解除</button>`:''}
   </div>
   <div class="scroller" id="scroller">
-    <div class="canvas" style="width:calc(var(--name-w) + ${W}px)">
+    <div class="canvas" style="width:calc(var(--band-w) + var(--name-w) + ${W}px)">
       <div class="hdr">
         <div class="corner">タスク</div>
         <div class="days" style="width:${W}px">${mon}${dayH}</div>
       </div>
       <div class="body">
-        <div class="bg" style="left:var(--name-w);width:${W}px">${bg}</div>
+        <div class="bg" style="left:calc(var(--band-w) + var(--name-w));width:${W}px">${bg}</div>
         ${rows || `<div class="empty">表示できるタスクがありません<br><span style="font-size:.85em;font-weight:600">復習マネージャーの仕事モードでToDoや計画を追加すると、ここに表示されます</span></div>`}
       </div>
     </div>
@@ -513,27 +519,9 @@ function renderChart(){
   if(_scrollKeep && _scrollKeep.lo!=null && _scrollKeep.dw===dw){
     sc2.scrollLeft = _scrollKeep.l + (_scrollKeep.lo-lo)*dw;
     sc2.scrollTop = _scrollKeep.t;
-  } else if(_scrollKeep && _scrollKeep.lo!=null && _scrollKeep.dw){
-    // ズーム変更時：画面の左端に見えていた日付を保つ
-    const nameW = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--name-w'))||0;
-    const leftDay = _scrollKeep.lo + _scrollKeep.l/_scrollKeep.dw;
-    sc2.scrollLeft = (leftDay-lo)*dw;
-    sc2.scrollTop = _scrollKeep.t;
-    void nameW;
   } else {
     scrollToToday(false);
   }
-}
-
-// グループ見出しの行に、タスク全体の期間を薄く表示
-function groupSpan(items, x, dw, color){
-  const live = items.filter(i=>!i.done);
-  if(!live.length) return '';
-  const s = live.reduce((m,i)=>i.start<m?i.start:m, live[0].start);
-  const ends = live.filter(i=>i.end).map(i=>i.end);
-  if(!ends.length) return '';
-  const e = ends.reduce((m,v)=>v>m?v:m, ends[0]);
-  return `<div class="link" style="--c:${color};left:${x(s)}px;width:${Math.max(dw, x(e)-x(s)+dw)}px;opacity:.35;height:6px"></div>`;
 }
 
 function rowHtml(it, color, x, dw, W, t){
@@ -565,7 +553,7 @@ function rowHtml(it, color, x, dw, W, t){
     bar = `<div class="bar${it.done?' done':''}${it.over&&!it.soft?' over':''}" style="--c:${color};left:${left}px;width:${w}px" ${click}>${fill}${ck}${lbl}</div>`;
   }
   return `<div class="row${it.done?' done':''}">
-    <div class="name" ${click} title="${esc(it.name)}"><div class="n">${esc(it.name)}</div><div class="m ${metaCls}">${esc(meta)}</div></div>
+    <div class="name" ${click} title="${esc(it.name)}"><div class="n">${esc(it.name)}</div></div>
     <div class="track" style="width:${W}px">${bar}</div>
   </div>`;
 }
@@ -611,15 +599,15 @@ function openPop(kind,id){
 function closePop(){ document.getElementById('ov').classList.remove('on'); }
 
 /* ── 操作 ── */
-function setZoom(k){ if(!ZOOM[k]||S.zoom===k) return; S.zoom=k; LS.set('zoom',k); render(); }
-function setSize(k){ if(S.size===k) return; S.size=k; LS.set('size',k); applySize(); _scrollKeep=null; S._lo=null; render(); }
+function setZoom(k){ if(!ZOOM[k]||S.zoom===k) return; S.zoom=k; LS.set('zoom2',k); render(); }
+function setSize(k){ if(S.size===k) return; S.size=k; LS.set('size2',k); applySize(); _scrollKeep=null; S._lo=null; render(); }
 function toggleKey(k){ S[k]=!S[k]; LS.set(k==='showDone'?'showDone2':k, S[k]); render(); }
 function toggleTag(id){ S.tagFilter = S.tagFilter.includes(id) ? S.tagFilter.filter(x=>x!==id) : [...S.tagFilter,id]; LS.set('tags',S.tagFilter); render(); }
 function clearTags(){ S.tagFilter=[]; LS.set('tags',[]); render(); }
-function toggleGroup(k){ if(S.closed[k]) delete S.closed[k]; else S.closed[k]=1; LS.set('closed',S.closed); render(); }
 function scrollToToday(smooth){
   const sc = document.getElementById('scroller'); if(!sc || S._lo==null) return;
-  const nameW = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--name-w'))||0;
+  const cs = getComputedStyle(document.documentElement);
+  const nameW = (parseFloat(cs.getPropertyValue('--name-w'))||0) + (parseFloat(cs.getPropertyValue('--band-w'))||0);
   const visible = sc.clientWidth - nameW;
   const target = (dn(today())-S._lo)*S._dw - visible*0.25;
   sc.scrollTo({left:Math.max(0,target), behavior: smooth?'smooth':'auto'});
