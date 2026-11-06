@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ガントチャート</title>
+<!-- ホーム画面に追加したとき：ブラウザのバーを出さずアプリとして開く（URLの ?code= もそのまま引き継がれる）。
+     manifestの start_url を使うとコードが消えるため、あえてmanifestは置かない -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ガント">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B2A5B'/%3E%3Crect x='18' y='26' width='40' height='12' rx='6' fill='%23FEBE10'/%3E%3Crect x='34' y='46' width='48' height='12' rx='6' fill='%23fff'/%3E%3Crect x='26' y='66' width='30' height='12' rx='6' fill='%23FEBE10'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +40,31 @@ html.size-l{ --fs:16px; --band-w:30px; --name-w:200px; --row-h:40px; --hdr-h:60p
   html.size-l{ --name-w:140px; }
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+/* ══ スマホ：縦向きで持っていても、画面を90度回して横向きのまま表示する ══
+   （見る人にスマホを横に倒してもらう。画面の向きロック中でも横向きで見られる） */
+html.rot body{
+  position:fixed;top:0;left:0;
+  width:100vh;height:100vw;width:100dvh;height:100dvw;
+  transform-origin:top left;transform:translateX(100vw) rotate(90deg);transform:translateX(100dvw) rotate(90deg);
+}
+/* ══ スマホの横向き（高さが低い画面）用の詰めた表示 ══ */
+html.compact{ --fs:12.5px; --band-w:20px; --name-w:128px; --row-h:26px; --hdr-h:38px; }
+html.compact.size-l{ --fs:14px; --band-w:22px; --name-w:150px; --row-h:31px; --hdr-h:42px; }
+html.compact .bars{flex-direction:row;align-items:center;border-bottom:2px solid var(--gold);background:#fff;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+html.compact .topbar{border-bottom:none;padding:4px 6px 4px 8px;flex-wrap:nowrap;gap:5px;flex-shrink:0}
+html.compact .brand{margin-right:0}
+html.compact .brand-name,html.compact .filters .lbl,html.compact .filters .div,html.compact .sync-pill .txt{display:none}
+html.compact .brand-ic{width:24px;height:24px;border-radius:7px}
+html.compact .brand-ic svg{width:15px;height:15px}
+html.compact .seg{padding:2px;border-radius:9px}
+html.compact .seg button{padding:3px 8px}
+html.compact .btn{padding:3px 8px;border-radius:9px}
+html.compact .sync-pill{padding:3px 8px}
+html.compact .filters{border-bottom:none;padding:4px 8px 4px 2px;flex:1;min-width:0}
+html.compact .chip{padding:1px 9px}
+html.compact .tagband span{font-size:.78em;letter-spacing:0}
+html.compact .scroller{padding-left:env(safe-area-inset-left,0px)}
+.bars{flex-shrink:0;display:flex;flex-direction:column}
 html,body{height:100%}
 body{
   background:var(--bg);color:var(--lbl);
@@ -346,6 +379,25 @@ function tagsOf(data){ return alive(data.tags, data.tagTombstones); }
 
 /* ══ 描画 ═══════════════════════════════════════════ */
 const $app = document.getElementById('app');
+function applyOrientation(){
+  const w = window.innerWidth, h = window.innerHeight;
+  const phone = Math.min(w, h) <= 520;          // スマホ（短い辺が520px以下）
+  const rot = phone && h > w;                    // スマホを縦に持っている → 回して横向き表示
+  const effH = rot ? w : h;                      // 実際に表示される「高さ」
+  const root = document.documentElement;
+  const changed = root.classList.contains('rot') !== rot || root.classList.contains('compact') !== (effH <= 520);
+  root.classList.toggle('rot', rot);
+  root.classList.toggle('compact', effH <= 520);
+  return changed;
+}
+applyOrientation();
+let _orientTimer = null;
+function onOrient(){
+  clearTimeout(_orientTimer);
+  _orientTimer = setTimeout(()=>{ if(applyOrientation() && S.phase==='ready'){ _scrollKeep=null; S._lo=null; render(); } }, 120);
+}
+window.addEventListener('resize', onOrient);
+window.addEventListener('orientationchange', onOrient);
 function applySize(){ document.documentElement.classList.toggle('size-l', S.size==='l'); }
 applySize();
 
@@ -481,6 +533,7 @@ function renderChart(){
   S._lo = lo; S._dw = dw;
 
   $app.innerHTML = `
+  <div class="bars">
   <div class="topbar">
     <div class="brand">
       <div class="brand-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="3"><line x1="4" y1="6" x2="13" y2="6" stroke="#FEBE10"/><line x1="8" y1="12" x2="20" y2="12" stroke="#fff"/><line x1="6" y1="18" x2="13" y2="18" stroke="#FEBE10"/></svg></div>
@@ -490,7 +543,7 @@ function renderChart(){
     <button class="btn" onclick="scrollToToday(true)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>今日</button>
     <div class="seg" role="group" aria-label="文字の大きさ"><button class="${S.size==='n'?'on':''}" onclick="setSize('n')">標準</button><button class="${S.size==='l'?'on':''}" onclick="setSize('l')" style="font-size:1.08em">大</button></div>
     <button class="sync-pill ${S.live?'live':'err'}" onclick="openMenu(this)" title="連携の設定">
-      <span class="sync-dot"></span><span>${S.live?'同期中':'オフライン'}</span><span class="num" style="color:var(--navy)">${esc(S.code)}</span>
+      <span class="sync-dot"></span><span class="txt">${S.live?'同期中':'オフライン'}</span><span class="num txt" style="color:var(--navy)">${esc(S.code)}</span>
     </button>
   </div>
   <div class="filters">
@@ -498,6 +551,7 @@ function renderChart(){
     <button class="chip gold${S.showDone?' on':''}" onclick="toggleKey('showDone')">完了も表示</button>
     ${TAGS.length?`<span class="div"></span><span class="lbl">タグ</span>${fChips}<button class="chip${tf.includes('__none')?' on':''}" onclick="toggleTag('__none')"><span class="dot" style="background:#9CA3AF"></span>タグなし</button>`:''}
     ${tf.length?`<button class="chip" onclick="clearTags()" style="border-style:dashed">絞り込みを解除</button>`:''}
+  </div>
   </div>
   <div class="scroller" id="scroller">
     <div class="canvas" style="width:calc(var(--band-w) + var(--name-w) + ${W}px)">
@@ -619,9 +673,11 @@ function openMenu(btn){
     <button onclick="closeMenu();connect(S.code)">再読み込み</button>
     <button class="danger" onclick="resetCode()">連携を解除する</button>`;
   m.classList.add('on');
-  const w = m.offsetWidth;
-  m.style.top = (r.bottom+8)+'px';
-  m.style.left = Math.max(8, Math.min(window.innerWidth-w-8, r.right-w))+'px';
+  const bars = document.querySelector('.bars');
+  m.style.left = 'auto';
+  m.style.right = '10px';
+  m.style.top = ((bars ? bars.offsetHeight : 50) + 6)+'px';
+  void r;
   setTimeout(()=>document.addEventListener('click', closeMenuOnce, {once:true}), 0);
 }
 function closeMenuOnce(e){ if(!document.getElementById('menu').contains(e.target)) closeMenu(); else document.addEventListener('click', closeMenuOnce, {once:true}); }
