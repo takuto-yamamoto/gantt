@@ -265,7 +265,7 @@ const S = {
   tagFilter: LS.get('tags',[]),        // 空 = すべて
   showTodo: LS.get('showTodo',true),
   showPlan: LS.get('showPlan',true),
-  showDone: LS.get('showDone',true),
+  showDone: LS.get('showDone2',false), // 完了したタスクは標準では表示しない（「完了も表示」で切り替え）
   closed: LS.get('closed',{}),
 };
 const ZOOM = { week2:{label:'2週間',dw:66}, month:{label:'1か月',dw:42}, quarter:{label:'3か月',dw:18} };
@@ -613,7 +613,7 @@ function closePop(){ document.getElementById('ov').classList.remove('on'); }
 /* ── 操作 ── */
 function setZoom(k){ if(!ZOOM[k]||S.zoom===k) return; S.zoom=k; LS.set('zoom',k); render(); }
 function setSize(k){ if(S.size===k) return; S.size=k; LS.set('size',k); applySize(); _scrollKeep=null; S._lo=null; render(); }
-function toggleKey(k){ S[k]=!S[k]; LS.set(k,S[k]); render(); }
+function toggleKey(k){ S[k]=!S[k]; LS.set(k==='showDone'?'showDone2':k, S[k]); render(); }
 function toggleTag(id){ S.tagFilter = S.tagFilter.includes(id) ? S.tagFilter.filter(x=>x!==id) : [...S.tagFilter,id]; LS.set('tags',S.tagFilter); render(); }
 function clearTags(){ S.tagFilter=[]; LS.set('tags',[]); render(); }
 function toggleGroup(k){ if(S.closed[k]) delete S.closed[k]; else S.closed[k]=1; LS.set('closed',S.closed); render(); }
