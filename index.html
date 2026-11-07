@@ -419,7 +419,7 @@ function renderConnect(msg){
       <li>下の欄に入力して「接続する」</li>
     </ol>
     <input class="code-inp num" id="code-inp" maxlength="6" placeholder="ABC123" autocomplete="off" autocapitalize="characters" spellcheck="false"
-      value="${esc(S.code)}" onkeydown="if(event.key==='Enter')doConnect()" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')">
+      value="" onkeydown="if(event.key==='Enter')doConnect()" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')">
     <button class="big-btn" id="code-btn" onclick="doConnect()">接続する</button>
     <div class="err-msg" id="code-err">${esc(msg||'')}</div>
     <div class="tip">
@@ -432,7 +432,7 @@ function renderConnect(msg){
 function renderLoading(){
   $app.innerHTML = `<div class="center"><div class="card" style="text-align:center">
     <div class="spin"></div><h1>データを読み込んでいます…</h1>
-    <p style="margin:0">連携コード <b class="num">${esc(S.code)}</b></p></div></div>`;
+    <p style="margin:0">少しお待ちください</p></div></div>`;
 }
 function renderError(){
   $app.innerHTML = `<div class="center"><div class="card" style="text-align:center">
@@ -543,7 +543,7 @@ function renderChart(){
     <button class="btn" onclick="scrollToToday(true)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>今日</button>
     <div class="seg" role="group" aria-label="文字の大きさ"><button class="${S.size==='n'?'on':''}" onclick="setSize('n')">標準</button><button class="${S.size==='l'?'on':''}" onclick="setSize('l')" style="font-size:1.08em">大</button></div>
     <button class="sync-pill ${S.live?'live':'err'}" onclick="openMenu(this)" title="連携の設定">
-      <span class="sync-dot"></span><span class="txt">${S.live?'同期中':'オフライン'}</span><span class="num txt" style="color:var(--navy)">${esc(S.code)}</span>
+      <span class="sync-dot"></span><span class="txt">${S.live?'同期中':'オフライン'}</span>
     </button>
   </div>
   <div class="filters">
@@ -668,7 +668,8 @@ function openMenu(btn){
   const r = btn.getBoundingClientRect();
   const upd = S.updatedAt ? new Date(S.updatedAt) : null;
   m.innerHTML = `
-    <div class="info">連携コード <b class="num" style="color:var(--navy)">${esc(S.code)}</b><br>${upd?`最終更新 ${upd.getMonth()+1}/${upd.getDate()} ${pad(upd.getHours())}:${pad(upd.getMinutes())}`:''}<br>表示専用（データは変更しません）</div>
+    <div class="info">連携コード <b class="num" id="code-mask" style="color:var(--navy);letter-spacing:2px">●●●●●●</b>
+      <a href="#" onclick="event.preventDefault();revealCode()" id="code-reveal" style="margin-left:6px;color:var(--royal);font-weight:700">表示</a><br>${upd?`最終更新 ${upd.getMonth()+1}/${upd.getDate()} ${pad(upd.getHours())}:${pad(upd.getMinutes())}`:''}<br>表示専用（データは変更しません）</div>
     <button onclick="copyEmbedUrl()">Notion用のURLをコピー</button>
     <button onclick="closeMenu();connect(S.code)">再読み込み</button>
     <button class="danger" onclick="resetCode()">連携を解除する</button>`;
@@ -681,6 +682,15 @@ function openMenu(btn){
   setTimeout(()=>document.addEventListener('click', closeMenuOnce, {once:true}), 0);
 }
 function closeMenuOnce(e){ if(!document.getElementById('menu').contains(e.target)) closeMenu(); else document.addEventListener('click', closeMenuOnce, {once:true}); }
+// 連携コードは知られるとデータを見られる・変えられるため、ふだんは伏せておく
+let _revealT=null;
+function revealCode(){
+  const m=document.getElementById('code-mask'), a=document.getElementById('code-reveal');
+  if(!m) return;
+  m.textContent=S.code; if(a) a.style.display='none';
+  clearTimeout(_revealT);
+  _revealT=setTimeout(()=>{ const m2=document.getElementById('code-mask'), a2=document.getElementById('code-reveal'); if(m2) m2.textContent='●●●●●●'; if(a2) a2.style.display=''; },10000);
+}
 function closeMenu(){ document.getElementById('menu').classList.remove('on'); }
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('on'),2200); }
 function embedUrl(){
